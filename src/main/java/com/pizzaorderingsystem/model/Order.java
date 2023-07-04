@@ -1,10 +1,14 @@
 package com.pizzaorderingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +17,9 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "`order`")
-@Data
+@Getter
+@Setter
+//@Data
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,9 +36,12 @@ public class Order {
     //Mappings
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    @JsonBackReference
+    @JsonIgnore
+    private Customer customerId;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<OrderLine> orderLineList = new ArrayList<>();
 
 }

@@ -7,7 +7,7 @@ import java.util.UUID;
 @Data
 public class OrderLineDTO {
     @NotNull
-    private UUID pizza;
+    private UUID pizzaId;
     @NotNull
     private String size;
     @NotNull

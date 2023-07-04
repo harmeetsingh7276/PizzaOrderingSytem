@@ -8,5 +8,13 @@ public class Constants {
     public static final String PIZZA_IMG_URL = "https://tinyurl.com/pizza-002";
     public static final String DATA_CREATED = "Successfully created";
     public static final String DATA_UPDATED = "Data updated successfully";
+    public static final String REGULAR_SIZE = "regular";
+    public static final String MEDIUM_SIZE = "medium";
+    public static final String LARGE_SIZE = "large";
+
+
+
+
+
 
 }
