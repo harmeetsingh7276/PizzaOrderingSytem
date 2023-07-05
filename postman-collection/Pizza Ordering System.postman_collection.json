@@ -1,0 +1,512 @@
+{
+	"info": {
+		"_postman_id": "0d73831c-39c1-437a-82d1-dcbdee910f67",
+		"name": "Pizza Ordering System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23324518"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "CustomerHome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/home",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Dharampal Singh\",\n    \"lastName\":\"Gorowada\",\n    \"address\":\"Dhankwadi Pune\",\n    \"phoneNumber\":\"9881011007\",\n    \"emailAddress\":\"dpsinghgorowada@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/135cc6d6-8bf7-4039-8e33-a62e8f9c3f77",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"135cc6d6-8bf7-4039-8e33-a62e8f9c3f77"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Charanjit Kaur Dharampal Singh\",\n    \"lastName\":\"Gorowada\",\n    \"address\":\"Dhankwadi Pune\",\n    \"phoneNumber\":\"8149444521\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/33000000-0000-0000-0000-000000000000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"33000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/33000000-0000-0000-0000-000000000000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"33000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pizza",
+			"item": [
+				{
+					"name": "PizzaHome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas/home",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPizza",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Chicken Tikka Pizza\",\n    \"description\":\"Pizza with Chicken Tikka pieces\",\n    \"type\":\"Veg\",\n    \"priceRegularSize\":200,\n    \"priceMediumSize\":250,\n    \"priceLargeSize\":300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllPizzas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPizzaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas/e0786539-b154-4d8d-81ba-f524d8eaeaf0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas",
+								"e0786539-b154-4d8d-81ba-f524d8eaeaf0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePizza",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Mutton Tikka Pizza\",\n    \"description\":\"Pizza with Mutton Tikka pieces\",\n    \"type\":\"Non Veg\",\n    \"priceRegularSize\":200,\n    \"priceMediumSize\":250,\n    \"priceLargeSize\":300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas/430c6970-5cbd-4586-a504-78a5bec5036d",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas",
+								"430c6970-5cbd-4586-a504-78a5bec5036d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePizza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/33000000-0000-0000-0000-000000000000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"33000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "OrderHome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/orders/home",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerId\":\"a1517106-7a00-458a-959f-f8e3f61d16ee\",\n    \"deliveryAddress\":\"PritamPura12333345556\",\n    \"totalAmount\":400,\n    \"pizza\":[\n        {\n            \"pizzaId\":\"a5277193-2d88-4292-b7de-9a0509212e56\",\n            \"size\":\"regular\",\n            \"quantity\":\"2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPizzaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas/e0786539-b154-4d8d-81ba-f524d8eaeaf0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas",
+								"e0786539-b154-4d8d-81ba-f524d8eaeaf0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePizza",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Mutton Tikka Pizza\",\n    \"description\":\"Pizza with Mutton Tikka pieces\",\n    \"type\":\"Non Veg\",\n    \"priceRegularSize\":200,\n    \"priceMediumSize\":250,\n    \"priceLargeSize\":300\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/pizzas/430c6970-5cbd-4586-a504-78a5bec5036d",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"pizzas",
+								"430c6970-5cbd-4586-a504-78a5bec5036d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePizza",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customers/33000000-0000-0000-0000-000000000000",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customers",
+								"33000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderLine",
+			"item": [
+				{
+					"name": "OrderLineHome",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/orderlines/8101cf43-4c05-48f6-bfa2-59407b5d6cff",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orderlines",
+								"8101cf43-4c05-48f6-bfa2-59407b5d6cff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddOrderLine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pizza\":\"430c6970-5cbd-4586-a504-78a5bec5036d\",\n    \"size\":\"regular\",\n    \"quantity\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/orderlines",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"orderlines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindByOrderId",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
