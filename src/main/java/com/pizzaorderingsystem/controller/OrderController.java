@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -39,12 +41,6 @@ public class OrderController {
         return "Hello World";
     }
 
-//    @PostMapping
-//    public ResponseEntity<ApiResponse> addOrder(@RequestBody Order order) {
-//        Order orderData = orderService.addOrder(order);
-//        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_CREATED, orderData));
-//    }
-
     @PostMapping
     public ResponseEntity<ApiResponse> addOrder(@RequestBody OrderDTO orderDTO) {
         Order order = new Order();
@@ -54,17 +50,14 @@ public class OrderController {
         log.info("BEFORE INSERT ORDER DATA");
         Order orderData = orderService.addOrder(order);
 
-
-//        List<OrderLine> orderLineList = new ArrayList<>();
-        //Set all the OrderLines here for the orderList
         for (OrderLineDTO orderLineDTO : orderDTO.getPizza()) {
             OrderLine orderLine = new OrderLine();
-//            log.info(orderLineDTO.getPizzaId().toString());
             Pizza pizzaData = pizzaService.getPizzaById(orderLineDTO.getPizzaId()).get();
             orderLine.setOrder(orderData);
             orderLine.setPizza(pizzaData);
             orderLine.setQuantity(orderLineDTO.getQuantity());
             orderLine.setSize(orderLineDTO.getSize());
+            
             //setting totalOrderLinePrice
             if (orderLine.getSize().equals(Constants.REGULAR_SIZE)) {
                 orderLine.setOrderLineTotalPrice(orderLine.getQuantity() * Long.parseLong(pizzaData.getPriceRegularSize().toString()));
@@ -75,29 +68,22 @@ public class OrderController {
             if (orderLine.getSize().equals(Constants.LARGE_SIZE)) {
                 orderLine.setOrderLineTotalPrice(orderLine.getQuantity() * Long.parseLong(pizzaData.getPriceLargeSize().toString()));
             }
-            log.info("BEFORE INSERT ORDERLINE DATA");
             OrderLine orderLineData = orderLineService.addOrderLine(orderLine);
-            log.info("AFTER INSERT ORDERLINE DATA:{}", orderLineData.getOrderLineId());
-//            orderLineList.add(orderLineData);
         }
-
-//        order.setOrderLineList(orderLineList);
-//        OrderResponse orderResponse = new OrderResponse(orderData);
-
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_CREATED, orderData));
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse> getAllCustomers() {
+    public ResponseEntity<ApiResponse> getAllOrders() {
         List<Order> orderData = orderService.getAllOrders();
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_FOUND, orderData));
     }
-//
-//    @GetMapping("/{customerId}")
-//    public ResponseEntity<ApiResponse> getCustomerById(@PathVariable UUID customerId) {
-//        Optional<Customer> customerData = orderService.getCustomerById(customerId);
-//        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_FOUND, customerData.get()));
-//    }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<ApiResponse> getCustomerById(@PathVariable UUID orderId) {
+        Optional<Order> orderData = orderService.getOrderById(orderId);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_FOUND, orderData.get()));
+    }
 //
 //    @PutMapping("/{customerId}")
 //    public ResponseEntity<ApiResponse> updateCustomer(@PathVariable UUID customerId,@RequestBody Customer customer) {

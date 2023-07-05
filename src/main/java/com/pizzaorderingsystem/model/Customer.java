@@ -45,7 +45,6 @@ public class Customer {
     }
 
     //Mappings
-    @JsonIgnore
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Order> orderList = new ArrayList<>();

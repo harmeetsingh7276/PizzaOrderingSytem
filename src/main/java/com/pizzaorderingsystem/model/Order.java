@@ -35,11 +35,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     @JsonBackReference
-    @JsonIgnore
     private Customer customerId;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
     private List<OrderLine> orderLineList = new ArrayList<>();
 
 }
