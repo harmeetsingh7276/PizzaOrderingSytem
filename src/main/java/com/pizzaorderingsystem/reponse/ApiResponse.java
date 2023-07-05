@@ -1,7 +1,5 @@
 package com.pizzaorderingsystem.reponse;
 
-import com.pizzaorderingsystem.model.Customer;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -3,12 +3,10 @@ package com.pizzaorderingsystem.controller;
 import com.pizzaorderingsystem.contants.Constants;
 import com.pizzaorderingsystem.dto.OrderDTO;
 import com.pizzaorderingsystem.dto.OrderLineDTO;
-import com.pizzaorderingsystem.model.Customer;
 import com.pizzaorderingsystem.model.Order;
 import com.pizzaorderingsystem.model.OrderLine;
 import com.pizzaorderingsystem.model.Pizza;
 import com.pizzaorderingsystem.reponse.ApiResponse;
-import com.pizzaorderingsystem.reponse.OrderResponse;
 import com.pizzaorderingsystem.service.CustomerService;
 import com.pizzaorderingsystem.service.OrderLineService;
 import com.pizzaorderingsystem.service.OrderService;
@@ -19,10 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/orders")

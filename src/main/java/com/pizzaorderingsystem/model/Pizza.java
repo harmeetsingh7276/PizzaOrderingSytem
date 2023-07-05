@@ -1,13 +1,14 @@
 package com.pizzaorderingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.pizzaorderingsystem.contants.Constants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,7 @@ public class Pizza {
     private Integer priceMediumSize;
     @NotNull
     private Integer priceLargeSize;
+
     public Pizza(UUID pizzaId, String name, String description, String type, String imageUrl, @NotNull Integer priceRegularSize, @NotNull Integer priceMediumSize, @NotNull Integer priceLargeSize) {
         this.pizzaId = pizzaId;
         this.name = name;
@@ -51,7 +53,7 @@ public class Pizza {
 
     //Mappings
     @JsonIgnore
-    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pizza", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<OrderLine> orderLineList = new ArrayList<>();
 
 

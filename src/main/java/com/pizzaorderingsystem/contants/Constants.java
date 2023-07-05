@@ -13,8 +13,4 @@ public class Constants {
     public static final String LARGE_SIZE = "large";
 
 
-
-
-
-
 }

@@ -10,7 +10,7 @@ public class OrderLineService {
     @Autowired
     private OrderLineRepository orderLineRepository;
 
-    public OrderLine addOrderLine(OrderLine orderLine){
+    public OrderLine addOrderLine(OrderLine orderLine) {
         return orderLineRepository.save(orderLine);
     }
 }

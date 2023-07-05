@@ -45,14 +45,14 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<ApiResponse> updateCustomer(@PathVariable UUID customerId,@RequestBody Customer customer) {
-        Customer customerData = customerService.updateCustomer(customerId,customer);
+    public ResponseEntity<ApiResponse> updateCustomer(@PathVariable UUID customerId, @RequestBody Customer customer) {
+        Customer customerData = customerService.updateCustomer(customerId, customer);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_UPDATED, customerData));
     }
 
     @DeleteMapping("/{customerId}")
     public ResponseEntity<ApiResponse> deleteCustomerById(@PathVariable UUID customerId) {
         customerService.deleteCustomerById(customerId);
-        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_DELETED,new ArrayList<>()));
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_DELETED, new ArrayList<>()));
     }
 }
