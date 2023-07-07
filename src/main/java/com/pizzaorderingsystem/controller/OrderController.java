@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -47,7 +48,7 @@ public class OrderController {
         order.setCustomerId(customerService.getCustomerById(orderDTO.getCustomerId()).get());
         order.setDeliveryAddress(orderDTO.getDeliveryAddress());
         order.setTotalAmount(orderDTO.getTotalAmount());
-        log.info("BEFORE INSERT ORDER DATA");
+
         Order orderData = orderService.addOrder(order);
 
         for (OrderLineDTO orderLineDTO : orderDTO.getPizza()) {
@@ -57,7 +58,7 @@ public class OrderController {
             orderLine.setPizza(pizzaData);
             orderLine.setQuantity(orderLineDTO.getQuantity());
             orderLine.setSize(orderLineDTO.getSize());
-            
+
             //setting totalOrderLinePrice
             if (orderLine.getSize().equals(Constants.REGULAR_SIZE)) {
                 orderLine.setOrderLineTotalPrice(orderLine.getQuantity() * Long.parseLong(pizzaData.getPriceRegularSize().toString()));
@@ -80,20 +81,21 @@ public class OrderController {
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<ApiResponse> getCustomerById(@PathVariable UUID orderId) {
+    public ResponseEntity<ApiResponse> getOrderById(@PathVariable UUID orderId) {
         Optional<Order> orderData = orderService.getOrderById(orderId);
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_FOUND, orderData.get()));
     }
-//
-//    @PutMapping("/{customerId}")
-//    public ResponseEntity<ApiResponse> updateCustomer(@PathVariable UUID customerId,@RequestBody Customer customer) {
-//        Customer customerData = orderService.updateCustomer(customerId,customer);
-//        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_UPDATED, customerData));
+
+//    @Todo
+//    @PutMapping("/{orderId}")
+//    public ResponseEntity<ApiResponse> updateOrder(@PathVariable UUID orderId,@RequestBody OrderDTO orderDTO) {
+//        Order orderData = orderService.updateOrder(orderId,orderDTO);
+//        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_UPDATED, orderData));
 //    }
-//
-//    @DeleteMapping("/{customerId}")
-//    public ResponseEntity<ApiResponse> deleteCustomerById(@PathVariable UUID customerId) {
-//        orderService.deleteCustomerById(customerId);
-//        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_DELETED,new ArrayList<>()));
-//    }
+
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<ApiResponse> deleteOrderById(@PathVariable UUID orderId) {
+        orderService.deleteOrderById(orderId);
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(true, Constants.DATA_DELETED,new ArrayList<>()));
+    }
 }
